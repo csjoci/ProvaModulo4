@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35201.131
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProvaModulo4.CleanArch.Domain", "ProvaModulo4\ProvaModulo4.CleanArch.Domain.csproj", "{BFA0AD2E-0517-4ADE-84A0-F77630901979}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanArch.Domain", "ProvaModulo4\CleanArch.Domain.csproj", "{BFA0AD2E-0517-4ADE-84A0-F77630901979}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProvaModulo4.CleanArch.Data", "ProvaModulo4.CleanArch.Data\ProvaModulo4.CleanArch.Data.csproj", "{C6E50307-BBB6-4AAC-BE4C-E1A5A5D55D18}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CleanArch.Data", "ProvaModulo4.CleanArch.Data\CleanArch.Data.csproj", "{C6E50307-BBB6-4AAC-BE4C-E1A5A5D55D18}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CleanArch", "CleanArch", "{4D70565B-1AA0-4A05-8C59-D1115523ABEF}"
 EndProject

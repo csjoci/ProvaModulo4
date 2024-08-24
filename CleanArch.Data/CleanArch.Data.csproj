@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ProvaModulo4\ProvaModulo4.CleanArch.Domain.csproj" />
+    <ProjectReference Include="..\ProvaModulo4\CleanArch.Domain.csproj" />
   </ItemGroup>
 
 </Project>
