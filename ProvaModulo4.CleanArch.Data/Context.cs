@@ -9,15 +9,19 @@ public class Context : DbContext
     public DbSet<Curso> Cursos { get; set; }
     public DbSet<Matricula> Matriculas { get; set; }
     public DbSet<Professor> Professores { get; set; }
-
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    public Context(DbContextOptions<Context> options):base(options)
     {
-        optionsBuilder.UseSqlServer("Server=SABRL9XPLD33; Database=MinhaBaseDados; " +
-                "Trusted_Connection=True; TrustServerCertificate=True")
-                .LogTo(Console.WriteLine, Microsoft.Extensions.Logging.LogLevel.Information);
-
-        base.OnConfiguring(optionsBuilder);
+        
     }
+
+    //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    //{
+    //    optionsBuilder.UseSqlServer("Server=SABRL9XPLD33; Database=MinhaBaseDados; " +
+    //            "Trusted_Connection=True; TrustServerCertificate=True")
+    //            .LogTo(Console.WriteLine, Microsoft.Extensions.Logging.LogLevel.Information);
+
+    //    base.OnConfiguring(optionsBuilder);
+    //}
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
