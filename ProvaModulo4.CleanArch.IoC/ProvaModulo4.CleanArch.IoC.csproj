@@ -11,9 +11,4 @@
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.1" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\ProvaModulo4.CleanArch.Data\ProvaModulo4.CleanArch.Data.csproj" />
-    <ProjectReference Include="..\ProvaModulo4\ProvaModulo4.CleanArch.Domain.csproj" />
-  </ItemGroup>
-
 </Project>

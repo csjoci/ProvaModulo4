@@ -1,4 +1,8 @@
-using ProvaModulo4.CleanArch.IoC;
+using ProvaModulo4.CleanArch.Domain.Repository;
+using ProvaModulo4.CleanArch.Data.Repository;
+using ProvaModulo4.CleanArch.Data;
+using Microsoft.EntityFrameworkCore;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,8 +13,17 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-IConfiguration configuration = builder.Configuration;
-IoC.AddProjectsIocConfig(builder.Services, configuration);
+//IConfiguration configuration = builder.Configuration;
+//IoC.AddProjectsIocConfig(builder.Services, configuration);
+
+builder.Services.AddScoped(typeof(IRepository<>), typeof(BaseRepository<>));
+builder.Services.AddScoped<IAlunoRepository, AlunoRepository>();
+builder.Services.AddScoped<IProfessorRepository, ProfessorRepository>();
+builder.Services.AddScoped<ICursoRepository, CursoRepository>();
+builder.Services.AddScoped<IMatriculaRepository, MatriculaRepository>();
+
+builder.Services.AddDbContext<Context>(options =>
+           options.UseSqlServer(builder.Configuration.GetConnectionString("MinhaConexao")));
 
 var app = builder.Build();
 
