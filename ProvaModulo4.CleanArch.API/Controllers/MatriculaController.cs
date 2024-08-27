@@ -1,39 +1,39 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ProvaModulo4.CleanArch.API.Dto;
-using ProvaModulo4.CleanArch.Domain.Repository;
 using ProvaModulo4.CleanArch.Domain.Model;
+using ProvaModulo4.CleanArch.Domain.Repository;
 
 namespace ProvaModulo4.CleanArch.API.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-public class AlunoController  : ControllerBase
+public class MatriculaController : ControllerBase
 {
-    private readonly IAlunoRepository _repository;
+    private readonly IMatriculaRepository _repository;
 
-    public AlunoController(IAlunoRepository repository)
+    public MatriculaController(IMatriculaRepository repository)
     {
         _repository = repository;
     }
 
     [HttpGet]
-    public ActionResult<IEnumerable<Aluno>> GetAll()
+    public ActionResult<IEnumerable<Matricula>> GetAll()
     {
         var response = _repository.GetAll();
-        return response == null? NotFound() : Ok(response);
+        return response == null ? NotFound() : Ok(response);
     }
 
     [HttpGet("{id}")]
     public ActionResult Get(int id)
     {
         var response = _repository.GetById(id);
-        return response == null? NotFound(): Ok(response);
+        return response == null ? NotFound() : Ok(response);
     }
 
     [HttpPost]
-    public ActionResult<IEnumerable<Aluno>> Post([FromBody] AlunoDto alunoDto)
+    public ActionResult<IEnumerable<Matricula>> Post([FromBody] MatriculaDto matriculaDto)
     {
-        var entity = Aluno.NewAluno(alunoDto.Nome, alunoDto.Email);
+        var entity = Matricula.NewMatricula(matriculaDto.AlunoId, matriculaDto.CursoId);
 
         _repository.Add(entity);
 
@@ -42,7 +42,7 @@ public class AlunoController  : ControllerBase
     }
 
     [HttpPut("{id}")]
-    public ActionResult Put(int id, [FromBody] AlunoDto alunoDto)
+    public ActionResult Put(int id, [FromBody] MatriculaDto matriculaDto)
     {
         var entity = _repository.GetById(id);
 
@@ -58,5 +58,4 @@ public class AlunoController  : ControllerBase
     {
         _repository.Delete(id);
     }
-
 }

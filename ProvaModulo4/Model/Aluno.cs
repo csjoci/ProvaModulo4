@@ -9,4 +9,15 @@ public class Aluno : IEntity
     public bool Ativo { get; set; }
     public List<Matricula> Matriculas { get; set; }
 
+    public static Aluno NewAluno(string nome, string email)
+    {
+        var aluno = new Aluno();
+        aluno.Nome = nome;
+        aluno.Email = email;
+        aluno.Ativo = true;
+
+        return aluno;
+    }
+
+
 }

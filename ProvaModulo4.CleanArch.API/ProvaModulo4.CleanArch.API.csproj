@@ -11,8 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Application\ProvaModulo4.CleanArch.Application.csproj" />
     <ProjectReference Include="..\ProvaModulo4.CleanArch.Data\ProvaModulo4.CleanArch.Data.csproj" />
-    <ProjectReference Include="..\ProvaModulo4\ProvaModulo4.CleanArch.Domain.csproj" />
   </ItemGroup>
 
 </Project>

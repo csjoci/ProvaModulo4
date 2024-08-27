@@ -8,4 +8,14 @@ public class Professor : IEntity
     public bool Ativo { get; set; }
     public List<Curso> Cursos { get; set; }
 
+    public static Professor NewProfessor(string nome, string email)
+    {
+        var prof = new Professor();
+        prof.Nome = nome;
+        prof.Email = email;
+        prof.Ativo = true;
+
+        return prof;
+    }
+
 }

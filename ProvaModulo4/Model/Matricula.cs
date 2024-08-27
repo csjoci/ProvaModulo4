@@ -12,4 +12,15 @@ public class Matricula : IEntity
     public int CursoId { get; set; }  
     public Curso Curso { get; set; }
 
+    public static Matricula NewMatricula(int idAluno, int idCurso)
+    {
+        var matricula = new Matricula();
+        matricula.Status = Enum.StatusMatriculaEnum.Ativa;
+        matricula.AlunoId = idAluno;
+        matricula.CursoId = idCurso;
+        matricula.DataMatricula = DateTime.Now;
+        return matricula;
+
+    }
+
 }
