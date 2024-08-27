@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using ProvaModulo4.CleanArch.API.Dto;
-using ProvaModulo4.CleanArch.Domain.Repository;
+using ProvaModulo4.CleanArch.Domain.Dto;
 using ProvaModulo4.CleanArch.Domain.Model;
+using ProvaModulo4.CleanArch.Domain.Service;
 
 namespace ProvaModulo4.CleanArch.API.Controllers;
 
@@ -9,46 +9,42 @@ namespace ProvaModulo4.CleanArch.API.Controllers;
 [ApiController]
 public class AlunoController  : ControllerBase
 {
-    private readonly IAlunoRepository _repository;
+    private readonly IAlunoService _service;
 
-    public AlunoController(IAlunoRepository repository)
+    public AlunoController(IAlunoService service)
     {
-        _repository = repository;
+        _service = service;
     }
 
     [HttpGet]
     public ActionResult<IEnumerable<Aluno>> GetAll()
     {
-        var response = _repository.GetAll();
+        var response = _service.GetAll();
         return response == null? NotFound() : Ok(response);
     }
 
     [HttpGet("{id}")]
     public ActionResult Get(int id)
     {
-        var response = _repository.GetById(id);
+        var response = _service.Get(id);
         return response == null? NotFound(): Ok(response);
     }
 
     [HttpPost]
     public ActionResult<IEnumerable<Aluno>> Post([FromBody] AlunoDto alunoDto)
     {
-        var entity = Aluno.NewAluno(alunoDto.Nome, alunoDto.Email);
-
-        _repository.Add(entity);
-
-        var response = _repository.GetAll();
+        var response = _service.Post(alunoDto);
         return response == null ? NotFound() : Ok(response);
     }
 
     [HttpPut("{id}")]
     public ActionResult Put(int id, [FromBody] AlunoDto alunoDto)
     {
-        var entity = _repository.GetById(id);
+        var entity = _service.Get(id);
 
         //alunoEntidade.AlterarNome(alunoDto.Nome);
 
-        //_repository.Alterar(alunoEntidade);
+        //_service.Alterar(alunoEntidade);
 
         return entity == null ? NotFound() : Ok(entity);
     }
@@ -56,7 +52,7 @@ public class AlunoController  : ControllerBase
     [HttpDelete("{id}")]
     public void Delete(int id)
     {
-        _repository.Delete(id);
+        _service.Delete(id);
     }
 
 }
